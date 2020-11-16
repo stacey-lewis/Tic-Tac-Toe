@@ -1,0 +1,58 @@
+/* * {
+  border: 1pt solid orange;
+} */
+
+body {
+  text-align: center;
+}
+
+#gameArea {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#board {
+  /* flex-grow: 1.5; */
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  column-gap: 3px;
+  row-gap: 3px;
+}
+
+
+.playSquare {
+ background-color: rgba(226, 226, 226, 1);
+ margin: 5px solid white;
+ /* border-radius: 50%; */
+ position: relative;
+ top: 0;
+ width: 150px;
+ height: 150px;
+ display: flex;
+ justify-content: center;
+ /* padding: 3px; */
+}
+
+.player1TokenBoard {
+  display: flex;
+  position: absolute;
+  width: 90%;
+  margin: auto;
+  visibility: hidden;
+
+}
+
+.player2TokenBoard {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  visibility: hidden;
+  height: 90%;
+}
+
+/* Test for CSS to make correct item appear. */
+ #item-7 > .player1TokenBoard {
+  visibility: visible;
+}

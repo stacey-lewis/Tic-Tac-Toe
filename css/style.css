@@ -19,19 +19,83 @@ body {
   grid-template-rows: 33% 33% 33%;
   column-gap: 3px;
   row-gap: 3px;
+  position: relative;
 }
 
-#strike-out{
-  display: inline-block;
+.strike-out{
   position: absolute;
-  border-radius: 70%;
   background-color: red;
   z-index: 1;
-  /* aspects to change with win */
-  width: 5px;
-  height: 400px;
-  bottom: 400px;
-  left: 300px;
+  visibility: hidden;
+}
+
+
+
+#strike-out0 {
+top: 75px;
+left: 25px;
+grid-area: 1 / 1;
+height: 5px;
+width: 400px;
+}
+
+#strike-out1 {
+top: 75px;
+left: 25px;
+grid-area: 2 / 1;
+height: 5px;
+width: 400px;
+}
+
+#strike-out2 {
+top: 75px;
+left: 25px;
+grid-area: 3 / 1;
+height: 5px;
+width: 400px;
+}
+
+#strike-out3 {
+height: 400px;
+top: 25px;
+left: 75px;
+grid-area: 1 / 1;
+height: 400px;
+width: 5px;
+}
+
+#strike-out4 {
+height: 400px;
+top: 25px;
+left: 75px;
+grid-area: 1 / 2;
+width: 5px;
+}
+
+#strike-out5 {
+height: 400px;
+top: 25px;
+left: 75px;
+grid-area: 1 / 3;
+width: 5px;
+}
+
+#strike-out7 {
+height: 400px;
+top: 25px;
+left: 75px;
+grid-area: 1 / 2;
+width: 5px;
+transform: rotate(45deg);
+}
+
+#strike-out6 {
+height: 400px;
+top: 25px;
+left: 75px;
+grid-area: 1 / 2;
+width: 5px;
+transform: rotate(135deg);
 }
 
 .playSquare {

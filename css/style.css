@@ -44,15 +44,18 @@ body {
 }
 
 .player2TokenBoard {
-  display: inline-block;
+  display: flex;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  margin: auto;
   visibility: hidden;
-  height: 90%;
+  width: 90%;
 }
 
 /* Test for CSS to make correct item appear. */
  #item-7 > .player1TokenBoard {
   visibility: visible;
+}
+
+#player2Token, #player1Token {
+  width: 70%;
 }

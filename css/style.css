@@ -130,3 +130,10 @@ transform: rotate(135deg);
 #player2Token, #player1Token {
   width: 50%;
 }
+
+#msgDisplay {
+  font-size: 30px;
+  padding-top: 50px;
+  font-weight: 900;
+  color: rgb(100, 93, 235);
+}

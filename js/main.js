@@ -26,10 +26,11 @@ const tictactoegame = {
     } //end for
   }, //end winCriteriaCalc function
 
-  player1Name: 'yourName',
-  player2Name: 'yourName',
+  player1Name: '',
+  player2Name: '',
 
   turnCounter: 'Player 1', //replace with entered names?
+  drawChecker: 'false',
 
   player1Winner: 'false',
   player2Winner: 'false',
@@ -198,25 +199,38 @@ const tictactoegame = {
     },
 
   },
+
+  drawCheck: function() {
+    $('.playSquare').each(function () {
+    if( $(this).find('.player1TokenBoard').css('visibility') == 'visible' ||
+      $(this).find('.player2TokenBoard').css('visibility') == 'visible') {
+      this.drawChecker = "true";
+      }
+    });
+  },
+
 }; //end tictactoegame
 
-//-----------------CLICK FUNCTION ----------------------------
+//-----------------CLICK FUNCTION ----------------------------//
 
 $('.playSquare').on("click", function () {
-  $('#msgDisplay').html("");
+  $('#msgDisplay').html(""); //clear screen message
 
+  tictactoegame.drawCheck();//check for draw
+  if (tictactoegame.drawChecker === "true") {
+    $('#msgDisplay').html("It's a draw!");
+  }
   //check if a winner has been decided - if so display message that the game is over.
-  if (tictactoegame.player2Winner === "true" || tictactoegame.player1Winner === "true"){
+  else if (tictactoegame.player2Winner === "true" || tictactoegame.player1Winner === "true"){
     $('#msgDisplay').html('The game is over, stop trying to play...');
   }
-  // check if all squares have been played.
-  // if (tictactoegame.player2Winner === "true" || tictactoegame.player1Winner === "true"){
-  //   $('#msgDisplay').html('The game is over, stop trying to play...');
-  // }
+
   else if (  //check if square has been played. if so, go to 'else' and display 'msg to pick again.'
     $(this).find('.player1TokenBoard').css('visibility') == 'hidden' &&
     $(this).find('.player2TokenBoard').css('visibility') == 'hidden' ) {
       //check who played, and make their counter appear in the square.
+      //// ----------COUNTER FOR VALID CLICKS----------------///
+      ///KEEP A COUNTER OF WHO CLICKED WHERE AND USE TO CHECK GAME PROGRESS ///
     if(tictactoegame.turnCounter === 'Player 1') { //check who played, and make their counter appear in the square.
       $(this).find('.player1TokenBoard').css({'visibility': 'visible'});
     } // end if
@@ -248,12 +262,23 @@ $('.playSquare').on("click", function () {
 
 //TO DO:
 
-//Add condition to say there was no winner
-//Add a reset board button
+//Add condition to say there was no winner- see note above.
+//Add a variable keeping track of game play.
+//Add a reset board button.
 
 //Add page to entry to set player 1 vs player 2.
 //Randomly select who goes first.
 //Add scoring board (use bank methodology)
-//Add scoring
 
 //make board look better - bug colors
+//make this a function
+// const squareCount = $('.playSquare');
+// console.log('squareCount', squareCount);
+// for (let i=0; i>squareCount.length; i++) {
+//   $('squareCount(i)').css()
+// };
+
+
+
+// if ($(this).find('.player1TokenBoard').css('visibility') == 'hidden' &&
+// $(this).find('.player2TokenBoard').css('visibility') == 'hidden' )

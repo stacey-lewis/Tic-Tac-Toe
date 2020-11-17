@@ -17,6 +17,15 @@ const tictactoegame = {
     false,  //topRight-diagonal
   ],
 
+  winCriteriaCalc: function() {
+    for (let i =0; i < this.winCriteria.length; i++) {
+      if (this.winCriteria[i] === "true") {
+        $('#strike-out' + i).css({'visibility': 'visible' });//activate the red line in the right spot based
+
+      } //end if
+    } //end for
+  }, //end winCriteriaCalc function
+
   player1Name: 'yourName',
   player2Name: 'yourName',
 
@@ -26,10 +35,13 @@ const tictactoegame = {
   player2Winner: 'false',
 
   turnNotification: function () {
-    if(this.turnCounter === 'Player 1') {
+    if(this.player1Winner === 'true' || this.player2Winner === 'true') {
+      this.turnCounter = 'Game Over';
+    }
+    else if(this.turnCounter === 'Player 1') {
       this.turnCounter = 'Player 2';
     }
-    else {
+    else if (this.turnCounter === 'Player 2') {
       this.turnCounter = 'Player 1';
     }
   }, //change turn counter
@@ -169,145 +181,73 @@ const tictactoegame = {
 
   },
 
-  // gameOverCheck: function () {
-  //   if (
-  //     ($('#item-1 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-2 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-3 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-4 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-6 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-7 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-8 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-1 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-4 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-7 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-2 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-8 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-3 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-6 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-1 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player1TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-3 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player1TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-7 .player1TokenBoard').css('visibility') == 'visible'
-  //   )) { this.player1Winner = 'true'; }
-  //   if (
-  //     ($('#item-1 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-2 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-3 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-4 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-6 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-7 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-8 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-1 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-4 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-7 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-2 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-8 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-3 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-6 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-1 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-9 .player2TokenBoard').css('visibility') == 'visible'
-  //     ) ||
-  //     ($('#item-3 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-5 .player2TokenBoard').css('visibility') == 'visible' &&
-  //     $('#item-7 .player2TokenBoard').css('visibility') == 'visible'
-  //   )) { this.player2Winner = 'true'; }
-  // },
-
   updateHTML: {
     updateTurnHTML: function () {
-      if(tictactoegame.turnCounter === 'Player 1') {
+      if (tictactoegame.turnCounter === 'Player 1') {
         $('#player1 .turnNote').html("Your Turn");
         $('#player2 .turnNote').html("");
       } //end if
-      else {
+      else if (tictactoegame.turnCounter === 'Player 2') {
         $('#player2 .turnNote').html("Your Turn");
         $('#player1 .turnNote').html("");
       } // end else
+
+      else if (tictactoegame.turnCounter === 'Game Over') {
+        $('.turnNote').html("");
+      }
     },
 
   },
 }; //end tictactoegame
 
-
-//sequence of play
+//-----------------CLICK FUNCTION ----------------------------
 
 $('.playSquare').on("click", function () {
   $('#msgDisplay').html("");
-// debugger;
-  //check if square has been played. if so, do nothing except change html.
-  //check if images are visible
-  if ($(this).find('.player1TokenBoard').css('visibility') == 'hidden' &&
-      $(this).find('.player2TokenBoard').css('visibility') == 'hidden' ) {
-      //check who played, and make their counter appear in the square.
-      if(tictactoegame.turnCounter === 'Player 1') {
-        $(this).find('.player1TokenBoard').css({'visibility': 'visible'});
-      } // end if
-      else {
-        $(this).find('.player2TokenBoard').css({'visibility': 'visible'});
-      } //end else
-      tictactoegame.gameOverCheckTwo(); //check if player has won
-      if (tictactoegame.player1Winner === 'true' ) {
-        $('#msgDisplay').html("Game Over! Player 1 Wins!"); //if player won display win message
 
-      //check which combination won, and activate correct CSS line.
-      for (let i =0; i < tictactoegame.winCriteria.length; i++) {
-        if (tictactoegame.winCriteria[i] === "true") {
-          $('#strike-out' + i).css({'visibility': 'visible' });//activate the red line in the right spot based on hidden CSS elements
-        } //end if
-      } //end for
-    } //end if player 1 wins
-      if (tictactoegame.player2Winner === 'true' ) {
-        $('#msgDisplay').html("Game Over! Player 2 Wins!"); //if player won display win message
-        for (let i =0; i < tictactoegame.winCriteria.length; i++) {
-          if (tictactoegame.winCriteria[i] === "true") {
-            $('#strike-out' + i).css({'visibility': 'visible' });//activate the red line in the right spot based on hidden CSS elements
-          } //end if
-        } //end for
-      }
-      // if no winner, change player turn & update HTML
-      else {
-        tictactoegame.turnNotification();
-        tictactoegame.updateHTML.updateTurnHTML();
-      } //end else
-    } //end if
+  //check if a winner has been decided - if so display message that the game is over.
+  if (tictactoegame.player2Winner === "true" || tictactoegame.player1Winner === "true"){
+    $('#msgDisplay').html('The game is over, stop trying to play...');
+  }
+  // check if all squares have been played.
+  // if (tictactoegame.player2Winner === "true" || tictactoegame.player1Winner === "true"){
+  //   $('#msgDisplay').html('The game is over, stop trying to play...');
+  // }
+  else if (  //check if square has been played. if so, go to 'else' and display 'msg to pick again.'
+    $(this).find('.player1TokenBoard').css('visibility') == 'hidden' &&
+    $(this).find('.player2TokenBoard').css('visibility') == 'hidden' ) {
+      //check who played, and make their counter appear in the square.
+    if(tictactoegame.turnCounter === 'Player 1') { //check who played, and make their counter appear in the square.
+      $(this).find('.player1TokenBoard').css({'visibility': 'visible'});
+    } // end if
+    else {
+      $(this).find('.player2TokenBoard').css({'visibility': 'visible'});
+    } //end else
+
+    tictactoegame.gameOverCheckTwo(); //check if player has won
+
+    if (tictactoegame.player1Winner === 'true' ) {
+      $('#msgDisplay').html("Game Over! Player 1 Wins!"); //if player won display win message
+    }// end if player 1 wins
+
+    if (tictactoegame.player2Winner === 'true' ) {
+      $('#msgDisplay').html("Game Over! Player 2 Wins!"); //if player won display win message
+    } //end player 2 win check
+
+    // if no winner, change player turn & update HTML
+    tictactoegame.winCriteriaCalc (); //check which combination won, and activate correct CSS line.
+    tictactoegame.turnNotification();
+    tictactoegame.updateHTML.updateTurnHTML();
+  } //end if
   else
   { // message to play a different square
     $('#msgDisplay').html("Please choose another square, that one has been played");
   }
-  // if (tictactoegame.Player2Winner === true || tictactoegame.Player1Winner === true){
-  //   $('#msgDisplay').html('The game is over, stop trying to play...');
-  // }
 }); //.playSquare click
 
 
 //TO DO:
 
-//Add cross out CSS element that appears based on who won
 //Add condition to say there was no winner
 //Add a reset board button
 

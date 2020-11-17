@@ -4,6 +4,7 @@
 
 body {
   text-align: center;
+  font-family: 'Indie Flower', cursive;
 }
 
 #gameArea {
@@ -24,7 +25,7 @@ body {
 .playSquare {
  background-color: rgba(226, 226, 226, 1);
  margin: 5px solid white;
- /* border-radius: 50%; */
+ border-radius: 2%;
  position: relative;
  top: 0;
  width: 150px;
@@ -40,7 +41,6 @@ body {
   width: 90%;
   margin: auto;
   visibility: hidden;
-
 }
 
 .player2TokenBoard {
@@ -51,11 +51,6 @@ body {
   width: 90%;
 }
 
-/* Test for CSS to make correct item appear. */
- #item-7 > .player1TokenBoard {
-  visibility: visible;
-}
-
 #player2Token, #player1Token {
-  width: 70%;
+  width: 50%;
 }

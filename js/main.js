@@ -11,8 +11,8 @@ const tictactoegame = {
 
   turnCounter: 'Player 1', //replace with entered names?
 
-  Player1Winner: 'false',
-  Player2Winner: 'false',
+  player1Winner: 'false',
+  player2Winner: 'false',
 
   turnNotification: function () {
     if(this.turnCounter === 'Player 1') {
@@ -56,7 +56,7 @@ const tictactoegame = {
       ($('#item-3 .player1TokenBoard').css('visibility') == 'visible' &&
       $('#item-5 .player1TokenBoard').css('visibility') == 'visible' &&
       $('#item-7 .player1TokenBoard').css('visibility') == 'visible'
-    )) { this.Player1Winner = 'true'; }
+    )) { this.player1Winner = 'true'; }
     if (
       ($('#item-1 .player2TokenBoard').css('visibility') == 'visible' &&
       $('#item-2 .player2TokenBoard').css('visibility') == 'visible' &&
@@ -125,11 +125,11 @@ $('.playSquare').on("click", function () {
         $(this).find('.player2TokenBoard').css({'visibility': 'visible'});
       } //end else
       tictactoegame.gameOverCheck(); //check if player has won
-      if (tictactoegame.Player1Winner === 'true' ) {
+      if (tictactoegame.player1Winner === 'true' ) {
         $('#msgDisplay').html("Game Over! Player 1 Wins!"); //if player won display win message
         //-----------------ADD CROSS OUT OPTIONS TO BOARD----------------
       }
-      if (tictactoegame.Player2Winner === 'true' ) {
+      if (tictactoegame.player2Winner === 'true' ) {
         $('#msgDisplay').html("Game Over! Player 2 Wins!"); //if player won display win message
       //  $('.playSquare').click(false); ------------ADD CLICK DISABLER
         //-----------------ADD CROSS OUT OPTIONS TO BOARD----------------
@@ -152,19 +152,13 @@ $('.playSquare').on("click", function () {
 
 //TO DO:
 
-//make board look better.
+//Add cross out CSS element that appears based on who won
+//Add condition to say there was no winner
+//Add a reset board button
+
 //Add page to entry to set player 1 vs player 2.
 //Randomly select who goes first.
-//Add cross out CSS element that appears based on who won
-
-
 //Add scoring board (use bank methodology)
-//De-activate clicker on game over and re-set board button.
-//Clean up game win checker... carry through from function or can you do "."+'xxx' add text???
+//Add scoring
 
-
-
-
-
-//PART 3: Interactive with names
-//Enter name for player 1 player 2, show them their tokens.
+//make board look better - bug colors

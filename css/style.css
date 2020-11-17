@@ -21,6 +21,18 @@ body {
   row-gap: 3px;
 }
 
+#strike-out{
+  display: inline-block;
+  position: absolute;
+  border-radius: 70%;
+  background-color: red;
+  z-index: 1;
+  /* aspects to change with win */
+  width: 5px;
+  height: 400px;
+  bottom: 400px;
+  left: 300px;
+}
 
 .playSquare {
  background-color: rgba(226, 226, 226, 1);

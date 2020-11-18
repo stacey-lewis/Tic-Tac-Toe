@@ -239,7 +239,10 @@ $('#reset').on("click", function () {
   tictactoegame.turnCSS();
   tictactoegame.scoreBoard.Player1 = 0;
   tictactoegame.scoreBoard.Player2 = 0;
-  console.log(tictactoegame.scoreBoard);
+  $('#scorePlayer1').html("0");
+  $('#scorePlayer2').html("0");
+  // console.log(tictactoegame.scoreBoard);
+
 });
 
 $('#playAgain').on("click", function () {
@@ -247,7 +250,9 @@ $('#playAgain').on("click", function () {
   tictactoegame.updateScoreAndSetLoserAsStartingPlayer();
   tictactoegame.resetBoard();
   tictactoegame.turnCSS();
-  console.log(tictactoegame.scoreBoard);
+  // console.log(tictactoegame.scoreBoard);
+  $('#scorePlayer2').html(tictactoegame.scoreBoard.Player2);
+  $('#scorePlayer1').html(tictactoegame.scoreBoard.Player1);
 });
 
 //TO DO:

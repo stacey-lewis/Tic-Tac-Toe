@@ -15,6 +15,7 @@ body {
 #screen {
   background: rgba(251, 251, 251, 0.58);
   padding: 40px;
+  margin: 0 auto;
 }
 
 #board {
@@ -119,9 +120,10 @@ transform: rotate(135deg);
 .player1TokenBoard {
   display: flex;
   position: absolute;
-  width: 90%;
+  width: 70%;
   margin: auto;
   visibility: hidden;
+  align-self: center;
 }
 
 .player2TokenBoard {
@@ -129,11 +131,14 @@ transform: rotate(135deg);
   position: absolute;
   margin: auto;
   visibility: hidden;
-  width: 90%;
+  width: 70%;
+  align-self: center;
+
+
 }
 
 #player2Token, #player1Token {
-  width: 50%;
+  width: 100px;
 }
 
 #msgDisplay {
@@ -157,6 +162,7 @@ transform: rotate(135deg);
   margin: auto 0;
   position: absolute;
   width: 100%;
+  height: 100%;
   z-index: -1;
   object-fit: cover;
 }

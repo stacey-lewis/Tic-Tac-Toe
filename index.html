@@ -3,92 +3,114 @@
   <head>
     <link rel="stylesheet" href="css/style.css"></link>
     <style> @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-</style>
+    </style>
     <meta charset="utf-8">
     <title>Tic Tac Toe</title>
   </head>
   <body>
+
     <div id="screen">
-    <div id='header'><h1> Bugs & Dinosaurs </h1>
+      <div class="entryPage">
+        <h1 class="explain">Welcome to 'bugs & dinosaurs'</h1>
+        <h3 class="explain">It's like naughts and crosses but with your favourite animals!</h3>
+        <p class="explain"> Enter your name below to start playing: </p>
+        <form>
+          <label for="namePlayer1">Player name 1:</label>
+          <input type="text" id="namePlayer1" name="namePlayer1"><br>
+          <label for="namePlayer2">Player name 2:</label>
+          <input type="text" id="namePlayer2" name="namePlayer2"><br>
+          <input type="submit" id="startPlay" value="Start play!"> </input>
+        </form>
+      </div>
+
+
+      <div class="playingScreen">
+        <div id='header'><h1> Bugs & Dinosaurs </h1></div>
+        <div id='gameArea'>
+          <div id='player1'>
+            <h2 class='playerHeading'>Player 1:</h2>
+            <!-- <h3 class='playerName'>name placeholder</h3> -->
+            <img id='player1Token' src="images/bug-3.png" >
+            <div>
+              <h3>Games won:</h3>
+              <h1 id="scorePlayer1" class='scoring'>0</h1>
+            </div>
+            <h4 class='turnNote'>Your turn</h4>
+
+          </div>
+          <div id='board' >
+            <div id='strike-out0' class='strike-out'></div>
+            <div id='strike-out1' class='strike-out'></div>
+            <div id='strike-out2' class='strike-out'></div>
+            <div id='strike-out3' class='strike-out'></div>
+            <div id='strike-out4' class='strike-out'></div>
+            <div id='strike-out5' class='strike-out'></div>
+            <div id='strike-out6' class='strike-out'></div>
+            <div id='strike-out7' class='strike-out'></div>
+
+            <div class='playSquare' id="item-1">
+              <img class='player1TokenBoard'  src="images/bug-3.png" >
+              <img class='player2TokenBoard'  src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-2">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-3">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-4">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-5">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-6">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-7">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-8">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+            <div class='playSquare' id="item-9">
+              <img class='player1TokenBoard' src="images/bug-3.png" >
+              <img class='player2TokenBoard' src="images/dino-3.png" >
+            </div>
+          </div>
+          <div id='player2'>
+            <h2 class='playerHeading'>Player 2:</h2>
+            <!-- <h3 class='playerName'>name placeholder</h3> -->
+            <img id='player2Token' src="images/dino-3.png" >
+            <div><h3>Games won:</h3>
+              <h1 id="scorePlayer2" class='scoring'>0</h1>
+            </div>
+            <h4 class='turnNote'></h4>
+
+          </div>
+        </div>
+        <div id='msgDisplay'>
+          <h4></h4>Choose to be bugs or dinosaurs, then choose a square to start play!
+        </div>
+        <div>
+          <button type=button id='playAgain'>Play Again</button>
+          <button type=button id='reset'>Reset Game</button>
+        </div>
+      </div>
+
+      <img id='dino-gif' src="images/dinosaur-gif.gif">
+      <img id='insect-gif' src="images/insect-gif.gif">
+      <img id='background' src="images/painting-3392333_1920.jpg">
+
     </div>
-    <div id='gameArea'>
-      <div id='player1'>
-        <h2 class='playerHeading'>Player 1:</h2>
-        <!-- <h3 class='playerName'>name placeholder</h3> -->
-        <img id='player1Token' src="images/bug-3.png" >
-        <div><h3>Games won:</h3>
-          <h1 id="scorePlayer1" class='scoring'>0</h1>
-        </div>
-        <h4 class='turnNote'>Your turn</h4>
-
-      </div>
-      <div id='board' >
-        <div id='strike-out0' class='strike-out'></div>
-        <div id='strike-out1' class='strike-out'></div>
-        <div id='strike-out2' class='strike-out'></div>
-        <div id='strike-out3' class='strike-out'></div>
-        <div id='strike-out4' class='strike-out'></div>
-        <div id='strike-out5' class='strike-out'></div>
-        <div id='strike-out6' class='strike-out'></div>
-        <div id='strike-out7' class='strike-out'></div>
-
-        <div class='playSquare' id="item-1">
-          <img class='player1TokenBoard'  src="images/bug-3.png" >
-          <img class='player2TokenBoard'  src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-2">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-3">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-4">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-5">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-6">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-7">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-8">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-        <div class='playSquare' id="item-9">
-          <img class='player1TokenBoard' src="images/bug-3.png" >
-          <img class='player2TokenBoard' src="images/dino-3.png" >
-        </div>
-      </div>
-      <div id='player2'>
-        <h2 class='playerHeading'>Player 2:</h2>
-        <!-- <h3 class='playerName'>name placeholder</h3> -->
-        <img id='player2Token' src="images/dino-3.png" >
-        <div><h3>Games won:</h3>
-          <h1 id="scorePlayer2" class='scoring'>0</h1>
-        </div>
-        <h4 class='turnNote'></h4>
-
-      </div>
-      </div>
-      <div id='msgDisplay'>
-        <h4></h4>Choose to be bugs or dinosaurs, then choose a square to start play!</div>
-      <div>
-        <button type=button id='playAgain'>Play Again</button>
-        <button type=button id='reset'>Reset Game</button>
-      </div>
-        <img id='background' src="images/painting-3392333_1920.jpg">
-  </div>
     <script src="js/jquery.js"> </script>
-    <script src="js/main.js"> </script>
+    <script src="js/main-AI.js"> </script>
   </body>
 </html>

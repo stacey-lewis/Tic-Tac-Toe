@@ -5,8 +5,11 @@
 body {
   text-align: center;
   font-family: 'Indie Flower', cursive;
-
 }
+
+
+
+
 
 #gameArea {
   display: flex;
@@ -16,6 +19,7 @@ body {
   background: rgba(251, 251, 251, 0.58);
   padding: 40px;
   margin: 0 auto;
+  border-radius: 2%;
 }
 
 #board {
@@ -180,7 +184,55 @@ transform: rotate(135deg);
   transition-delay: 0.1s;
 }
 
+#startPlay {
+  background: rgb(187, 219, 178);
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  margin: 3px solid white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.4);
+  font-family: 'Indie Flower', cursive;
+  padding: 10px 20px;
+  transition-delay: 0.1s;
+  position: relative;
+  top: 20px;
+
+}
+
+.playingScreen {
+  visibility: hidden;
+}
+
+.entryPage {
+  position: absolute;
+  z-index: 2;
+  background: rgba(251, 251, 251, 0.7);
+  padding-bottom: 80px;
+  padding-top: 30px;
+  margin: 0 auto;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  border-radius: 3%;
+  visibility: visible;
+}
+
+/* #explain {
+  position: relative;
+  top: -60px;
+} */
+
+
 #playAgain:hover {
+  background-color:white;
+}
+
+#startPlay:hover {
+  background-color:white;
+}
+
+#reset:hover {
   background-color:white;
 }
 
@@ -197,3 +249,20 @@ transform: rotate(135deg);
   /* height:  */
 
 }
+
+
+#dino-gif {
+  position: absolute;
+  max-width: 200px;
+  bottom: 0;
+  right: 0;
+}
+
+ #insect-gif {
+   transform: rotateY(180deg);
+   transform: rotate(130deg);
+   left: 0;
+   position: absolute;
+   max-width: 200px;
+   bottom: 5%;
+ }

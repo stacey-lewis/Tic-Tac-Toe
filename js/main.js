@@ -18,6 +18,12 @@ const tictactoegame = {
     9,
   ], //end gamePlayRecord
 
+  //onGoingScoreBoard in use if chosen 'play again'
+  scoreBoard: {
+    Player1: 0,
+    Player2: 0,
+  },
+
   //keep a record of which win combination won
   winCriteria: [
     false,  //top-horizontal
@@ -67,6 +73,7 @@ const tictactoegame = {
     }
   }, //change turn counter
 
+  //check if there is a winning combination
   gameOverCheckThree: function () {
     if((tictactoegame.gamePlayRecord[0] == tictactoegame.gamePlayRecord[1]) &&
       (tictactoegame.gamePlayRecord[2] == tictactoegame.gamePlayRecord[1]))
@@ -118,6 +125,7 @@ const tictactoegame = {
     } // end if
   },
 
+  //change the writing that indicates whose turn it is
   turnCSS:  function () {
     if (tictactoegame.turnCounter === 'Player 1') {
       $('#player1 .turnNote').html("Your Turn");
@@ -133,6 +141,38 @@ const tictactoegame = {
     }
   },
 
+  //reset the board to play again
+  resetBoard: function () {
+    $('.playSquare').find('img').css({'visibility': 'hidden'});
+    $('.playSquare').find('.strike-out').css({'visibility': 'hidden'});
+    this.winner = "none";
+    this.drawChecker = "none";
+    this.clickCounter = 0;
+    $('#msgDisplay').html("");
+    // this.turnCounter = 'Player 1';
+    for (let i =0; i < this.gamePlayRecord.length; i++) {
+      const number = i + 1;
+      this.gamePlayRecord[i] = number;
+      this.winCriteria[i] = 'false';
+    } //end for
+    this.winCriteriaCalc ();
+  },
+
+  //updated score board and set starting player for 'play again' button
+  updateScoreAndSetLoserAsStartingPlayer: function () {
+    if(this.winner === 'Player 1') {
+      this.turnCounter = 'Player 2';
+    }
+    else {
+      this.turnCounter = 'Player 1';
+    }
+    if (this.winner === 'Player 1') {
+      this.scoreBoard.Player1 = parseInt(this.scoreBoard.Player1) + 1;
+    }
+    else if (this.winner === 'Player 2') {
+      this.scoreBoard.Player2 = parseInt(this.scoreBoard.Player2) + 1;
+    }
+  },
 }; //end tictactoegame
 
 //-----------------CLICK FUNCTION ----------------------------//
@@ -168,6 +208,7 @@ $('.playSquare').on("click", function () {
     if (tictactoegame.winner !== 'none' ) {
       $('#msgDisplay').html(`Game Over! ${tictactoegame.winner} Wins!`);
       $('#playAgain').css({'visibility': 'visible'});
+      $('#reset').css({'visibility': 'visible'});
     } //end winner
 
     //check which combination won, and activate CSS line.
@@ -178,6 +219,7 @@ $('.playSquare').on("click", function () {
     if(tictactoegame.drawChecker == 'true') {
       $('#msgDisplay').html("It's a draw!");
       $('#playAgain').css({'visibility': 'visible'});
+      $('#reset').css({'visibility': 'visible'});
     }
 
     // Change player turn & update HTML
@@ -191,39 +233,28 @@ $('.playSquare').on("click", function () {
   }
 }); //.playSquare click
 
-$('#playAgain').on("click", function () {
-  $('.playSquare').find('img').css({'visibility': 'hidden'});
-  $('.playSquare').find('.strike-out').css({'visibility': 'hidden'});
-  tictactoegame.winner = "none";
-  tictactoegame.drawChecker = "none";
-  tictactoegame.clickCounter = 0;
-  $('#msgDisplay').html("");
+$('#reset').on("click", function () {
+  tictactoegame.resetBoard();
   tictactoegame.turnCounter = 'Player 1';
-  for (let i =0; i < tictactoegame.gamePlayRecord.length; i++) {
-    const number = i + 1;
-    tictactoegame.gamePlayRecord[i] = number;
-    tictactoegame.winCriteria[i] = 'false';
-  } //end for
-  tictactoegame.winCriteriaCalc ();
+  tictactoegame.turnCSS();
+  tictactoegame.scoreBoard.Player1 = 0;
+  tictactoegame.scoreBoard.Player2 = 0;
+  console.log(tictactoegame.scoreBoard);
+});
+
+$('#playAgain').on("click", function () {
+
+  tictactoegame.updateScoreAndSetLoserAsStartingPlayer();
+  tictactoegame.resetBoard();
+  tictactoegame.turnCSS();
+  console.log(tictactoegame.scoreBoard);
 });
 
 //TO DO:
 
-//Add a reset board button.
 
 //Add page to entry to set player 1 vs player 2.
 //Randomly select who goes first.
 //Add scoring board (use bank methodology)
 
 //make board look better - bug colors
-//make this a function
-// const squareCount = $('.playSquare');
-// console.log('squareCount', squareCount);
-// for (let i=0; i>squareCount.length; i++) {
-//   $('squareCount(i)').css()
-// };
-
-
-
-// if ($(this).find('.player1TokenBoard').css('visibility') == 'hidden' &&
-// $(this).find('.player2TokenBoard').css('visibility') == 'hidden' )

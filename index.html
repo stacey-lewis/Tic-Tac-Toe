@@ -14,9 +14,13 @@
     <div id='gameArea'>
       <div id='player1'>
         <h2 class='playerHeading'>Player 1:</h2>
-        <h3 class='playerName'>name placeholder</h3>
+        <!-- <h3 class='playerName'>name placeholder</h3> -->
         <img id='player1Token' src="images/bug.png" >
+        <div><h3>Games won:</h3>
+          <h1 id="scorePlayer1" class='scoring'>0</h1>
+        </div>
         <h4 class='turnNote'>Your turn</h4>
+
       </div>
       <div id='board' >
         <div id='strike-out0' class='strike-out'></div>
@@ -67,14 +71,21 @@
       </div>
       <div id='player2'>
         <h2 class='playerHeading'>Player 2:</h2>
-        <h3 class='playerName'>name placeholder</h3>
+        <!-- <h3 class='playerName'>name placeholder</h3> -->
         <img id='player2Token' src="images/dino.png" >
+        <div><h3>Games won:</h3>
+          <h1 id="scorePlayer2" class='scoring'>0</h1>
+        </div>
         <h4 class='turnNote'></h4>
+
       </div>
       </div>
       <div id='msgDisplay'>
         <h4></h4></div>
-      <div> <button type=button id='playAgain'>Play Again</button> </div>
+      <div>
+        <button type=button id='playAgain'>Play Again</button>
+        <button type=button id='reset'>Reset Game</button>
+      </div>
         <img id='background' src="images/painting-3392333_1920.jpg">
   </div>
     <script src="js/jquery.js"> </script>

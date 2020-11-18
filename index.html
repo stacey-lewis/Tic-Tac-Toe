@@ -10,16 +10,17 @@
   <body>
 
     <div id="screen">
+
       <div class="entryPage">
         <h1 class="explain">Welcome to 'bugs & dinosaurs'</h1>
         <h3 class="explain">It's like naughts and crosses but with your favourite animals!</h3>
         <p class="explain"> Enter your name below to start playing: </p>
         <form>
           <label for="namePlayer1">Player name 1:</label>
-          <input type="text" id="namePlayer1" name="namePlayer1"><br>
+          <input type="text" id="namePlayer1" name="namePlayer1" placeholder="Type name here"><br>
           <label for="namePlayer2">Player name 2:</label>
-          <input type="text" id="namePlayer2" name="namePlayer2"><br>
-          <input type="submit" id="startPlay" value="Start play!"> </input>
+          <input type="text" id="namePlayer2" name="namePlayer2" placeholder="Type name here"><br>
+          <button type=button id="start">Start play! </button>
         </form>
       </div>
 
@@ -28,8 +29,8 @@
         <div id='header'><h1> Bugs & Dinosaurs </h1></div>
         <div id='gameArea'>
           <div id='player1'>
-            <h2 class='playerHeading'>Player 1:</h2>
-            <!-- <h3 class='playerName'>name placeholder</h3> -->
+            <h3 class='playerHeading'>Player 1:</h3>
+            <h2 id='playerName1'></h2>
             <img id='player1Token' src="images/bug-3.png" >
             <div>
               <h3>Games won:</h3>
@@ -86,8 +87,8 @@
             </div>
           </div>
           <div id='player2'>
-            <h2 class='playerHeading'>Player 2:</h2>
-            <!-- <h3 class='playerName'>name placeholder</h3> -->
+            <h3 class='playerHeading'>Player 2:</h3>
+            <h2 id='playerName2'></h2>
             <img id='player2Token' src="images/dino-3.png" >
             <div><h3>Games won:</h3>
               <h1 id="scorePlayer2" class='scoring'>0</h1>
@@ -97,11 +98,11 @@
           </div>
         </div>
         <div id='msgDisplay'>
-          <h4></h4>Choose to be bugs or dinosaurs, then choose a square to start play!
+          <h4>Click anywhere to start!</h4>
         </div>
         <div>
-          <button type=button id='playAgain'>Play Again</button>
-          <button type=button id='reset'>Reset Game</button>
+          <button type='button' id='playAgain'>Play Again</button>
+          <button type='button' id='reset'>Reset Game</button>
         </div>
       </div>
 

@@ -177,10 +177,16 @@ const tictactoegame = {
 
 //-----------------CLICK FUNCTION ----------------------------//
 
-$('#startPlay').on("click", function (ev) {
-  $('.entryPage').css('visibility', 'hidden');
+
+$('#start').on("click", function () {
   $('.playingScreen').css('visibility', 'visible');
+  $('.entryPage').fadeOut();
+  $('#playerName1').html( $('#namePlayer1').val() );
+  $('#playerName2').html( $('#namePlayer2').val() );
+  $('#playAgain').css('visibility', 'visible');
+  $('#reset').css('visibility', 'visible');
 });
+
 
 $('.playSquare').on("click", function () {
   $('#msgDisplay').html(""); //clear screen message
@@ -246,6 +252,14 @@ $('#reset').on("click", function () {
   tictactoegame.scoreBoard.Player2 = 0;
   $('#scorePlayer1').html("0");
   $('#scorePlayer2').html("0");
+  $('.entryPage').fadeIn();
+  $('.playingScreen').css('visibility', 'hidden');
+  // $('#playAgain').css('display', 'none');
+  // $('#reset').css('display', 'none');
+  $('#namePlayer1').val("");
+  $('#namePlayer2').val("");
+
+
   // console.log(tictactoegame.scoreBoard);
 
 });

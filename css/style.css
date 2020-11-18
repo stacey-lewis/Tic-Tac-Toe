@@ -7,10 +7,6 @@ body {
   font-family: 'Indie Flower', cursive;
 }
 
-
-
-
-
 #gameArea {
   display: flex;
   justify-content: space-evenly;
@@ -114,8 +110,8 @@ transform: rotate(135deg);
  border-radius: 2%;
  position: relative;
  top: 0;
- width: 150px;
- height: 150px;
+ width: 160px;
+ height: 160px;
  display: flex;
  justify-content: center;
  /* padding: 3px; */
@@ -137,12 +133,14 @@ transform: rotate(135deg);
   visibility: hidden;
   width: 70%;
   align-self: center;
+}
 
-
+h3, h2 {
+  padding: 0;
 }
 
 #player2Token, #player1Token {
-  width: 100px;
+  height: 80px;
 }
 
 #msgDisplay {
@@ -182,9 +180,10 @@ transform: rotate(135deg);
   font-family: 'Indie Flower', cursive;
   padding: 10px 20px;
   transition-delay: 0.1s;
+  display: relative;
 }
 
-#startPlay {
+#start {
   background: rgb(187, 219, 178);
   font-size: 20px;
   border-radius: 8px;

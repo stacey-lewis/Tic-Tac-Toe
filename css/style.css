@@ -5,11 +5,16 @@
 body {
   text-align: center;
   font-family: 'Indie Flower', cursive;
+
 }
 
 #gameArea {
   display: flex;
   justify-content: space-evenly;
+}
+#screen {
+  background: rgba(251, 251, 251, 0.58);
+  padding: 40px;
 }
 
 #board {
@@ -24,7 +29,7 @@ body {
 
 .strike-out{
   position: absolute;
-  background-color: red;
+  background-color: rgb(15, 145, 39);
   z-index: 1;
   visibility: hidden;
 }
@@ -99,7 +104,7 @@ transform: rotate(135deg);
 }
 
 .playSquare {
- background-color: rgba(226, 226, 226, 1);
+ background-color: white;
  margin: 5px solid white;
  border-radius: 2%;
  position: relative;
@@ -133,13 +138,42 @@ transform: rotate(135deg);
 
 #msgDisplay {
   font-size: 30px;
-  padding-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-weight: 900;
-  color: rgb(100, 93, 235);
+  color: rgb(15, 145, 39);
 }
 
 
 .turnNote {
-  color: rgb(22, 127, 223);
+  color: rgb(15, 145, 39);
   font-size: 24px;
+}
+
+#background {
+  display: inline-block;
+  top: 0px;
+  left: 0px;
+  margin: auto 0;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+#playAgain {
+  background: rgb(187, 219, 178);
+  font-size: 20px;
+  visibility: hidden;
+  border-radius: 8px;
+  border: none;
+  margin: 3px solid white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.4);
+  font-family: 'Indie Flower', cursive;
+  padding: 10px 20px;
+  transition-delay: 0.1s;
+}
+
+#playAgain:hover {
+  background-color:white;
 }

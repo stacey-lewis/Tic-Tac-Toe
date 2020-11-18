@@ -34,8 +34,10 @@ const tictactoegame = {
     for (let i =0; i < this.winCriteria.length; i++) {
       if (this.winCriteria[i] === "true") {
         $('#strike-out' + i).css({'visibility': 'visible' });//activate the red line in the right spot based
-
       } //end if
+      else {
+        $('#strike-out' + i).css({'visibility': 'hidden' });
+      }
     } //end for
   }, //end winCriteriaCalc function - this includes turning on CSS
 
@@ -140,7 +142,7 @@ $('.playSquare').on("click", function () {
 
   //check if a winner has been decided - if so display message that the game is over.
   if (tictactoegame.winner !== "none" || tictactoegame.drawChecker == 'true') {
-    $('#msgDisplay').html('The game is over, refresh the page to play again!');
+    $('#msgDisplay').html('The game is over, click below to play again!');
   }
 
   else if (  //check if square has been played. if so, go to 'else' and display 'msg to pick again.'
@@ -165,6 +167,7 @@ $('.playSquare').on("click", function () {
     tictactoegame.gameOverCheckThree();
     if (tictactoegame.winner !== 'none' ) {
       $('#msgDisplay').html(`Game Over! ${tictactoegame.winner} Wins!`);
+      $('#playAgain').css({'visibility': 'visible'});
     } //end winner
 
     //check which combination won, and activate CSS line.
@@ -174,6 +177,7 @@ $('.playSquare').on("click", function () {
     tictactoegame.drawCheck();
     if(tictactoegame.drawChecker == 'true') {
       $('#msgDisplay').html("It's a draw!");
+      $('#playAgain').css({'visibility': 'visible'});
     }
 
     // Change player turn & update HTML
@@ -187,6 +191,21 @@ $('.playSquare').on("click", function () {
   }
 }); //.playSquare click
 
+$('#playAgain').on("click", function () {
+  $('.playSquare').find('img').css({'visibility': 'hidden'});
+  $('.playSquare').find('.strike-out').css({'visibility': 'hidden'});
+  tictactoegame.winner = "none";
+  tictactoegame.drawChecker = "none";
+  tictactoegame.clickCounter = 0;
+  $('#msgDisplay').html("");
+  tictactoegame.turnCounter = 'Player 1';
+  for (let i =0; i < tictactoegame.gamePlayRecord.length; i++) {
+    const number = i + 1;
+    tictactoegame.gamePlayRecord[i] = number;
+    tictactoegame.winCriteria[i] = 'false';
+  } //end for
+  tictactoegame.winCriteriaCalc ();
+});
 
 //TO DO:
 

@@ -5,6 +5,7 @@
 body {
   text-align: center;
   font-family: 'Indie Flower', cursive;
+  /* position: relative; */
 }
 
 #gameArea {
@@ -14,9 +15,15 @@ body {
 }
 #screen {
   background: rgba(251, 251, 251, 0.58);
-  padding: 40px;
   margin: 0 auto;
   border-radius: 2%;
+  position: absolute;
+  /* display: inline-block; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 80%;
+  width: 90%;
 }
 
 #board {
@@ -185,7 +192,7 @@ h3, h2 {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.4);
   font-family: 'Indie Flower', cursive;
   padding: 10px 20px;
-  transition-delay: 0.1s;
+
 }
 
 #start, #onePlayerGame, #twoPlayerGame {
@@ -204,7 +211,7 @@ h3, h2 {
 }
 
 .playingScreen {
-  visibility: hidden;
+  display: none;
 }
 
 .entryPage {
@@ -219,7 +226,9 @@ h3, h2 {
   left: 50%;
   transform: translate(-50%, -60%);
   border-radius: 3%;
-  visibility: hidden;
+  display: none;
+  /* opacity: 1;
+  transition: 0.7s opacity; */
 }
 
 .playerChoicePage {
@@ -234,7 +243,9 @@ h3, h2 {
   left: 50%;
   transform: translate(-50%, -60%);
   border-radius: 3%;
-  visibility: visible;
+  display: inherit;
+  /* opacity: 1;
+  transition: 0.7s opacity; */
 }
 
 /* #explain {

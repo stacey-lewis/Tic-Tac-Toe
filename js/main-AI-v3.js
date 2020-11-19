@@ -320,8 +320,8 @@ $('#reset').on("click", function () {
   tictactoegame.scoreBoard.Player2 = 0;
   $('#scorePlayer1').html("0");
   $('#scorePlayer2').html("0");
-  $('.playerChoicePage').css('visibility', 'visible');
-  $('.playingScreen').css('visibility', 'hidden');
+  $('.playerChoicePage').fadeIn();
+  $('.playingScreen').fadeOut();
   $('#namePlayer1').val("");
   $('#namePlayer2').val("");
   $('#playAgain').css('visibility', 'hidden');
@@ -344,10 +344,9 @@ $('#playAgain').on("click", function () {
 
 //starting button entry page action
 $('#start').on("click", function () {
-  $('.playingScreen').css('visibility', 'visible');
-  $('.entryPage').css('visibility', 'hidden');
+  $('.playingScreen').fadeIn();
+  $('.entryPage').fadeOut();
   $('#playerName1').html( $('#namePlayer1').val() );
-
   $('#playAgain').css('visibility', 'visible');
   $('#reset').css('visibility', 'visible');
   if(tictactoegame.aiPlayer === 'false') {
@@ -357,8 +356,8 @@ $('#start').on("click", function () {
 
 //starting button entry page action
 $('#onePlayerGame').on("click", function () {
-  $('.entryPage').css('visibility', 'visible');
-  $('.playerChoicePage').css('visibility', 'hidden');
+  $('.entryPage').fadeIn();
+  $('.playerChoicePage').fadeOut();
   tictactoegame.aiPlayer = 'true';
   $('#playerName2').html("Computer");
   $('#namePlayer2').hide();
@@ -367,8 +366,8 @@ $('#onePlayerGame').on("click", function () {
 });
 
 $('#twoPlayerGame').on("click", function () {
-  $('.entryPage').css('visibility', 'visible');
-  $('.playerChoicePage').css('visibility', 'hidden');
+  $('.entryPage').fadeIn();
+  $('.playerChoicePage').fadeOut();
   tictactoegame.aiPlayer = 'false';
   $('#namePlayer2').show();
   $('#label2').show();

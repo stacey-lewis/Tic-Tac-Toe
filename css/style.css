@@ -10,6 +10,7 @@ body {
 #gameArea {
   display: flex;
   justify-content: space-evenly;
+  margin: auto;
 }
 #screen {
   background: rgba(251, 251, 251, 0.58);
@@ -110,8 +111,8 @@ transform: rotate(135deg);
  border-radius: 2%;
  position: relative;
  top: 0;
- width: 160px;
- height: 160px;
+ width: 150px;
+ height: 150px;
  display: flex;
  justify-content: center;
  /* padding: 3px; */
@@ -145,10 +146,11 @@ h3, h2 {
 
 #msgDisplay {
   font-size: 30px;
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 20px;
   font-weight: 900;
   color: rgb(15, 145, 39);
+  height: 50px;
 }
 
 
@@ -180,7 +182,6 @@ h3, h2 {
   font-family: 'Indie Flower', cursive;
   padding: 10px 20px;
   transition-delay: 0.1s;
-  display: relative;
 }
 
 #start {

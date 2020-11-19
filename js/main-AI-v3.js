@@ -294,17 +294,20 @@ $('.playSquare').on("click", function () {
       tictactoegame.drawChecker == false)
     {
 
-      tictactoegame.aiCalc();
-      tictactoegame.clickCounter += 1; //add count to valid turns played
-      tictactoegame.gameOverCheckThree(); //check if won, and display win message.
-      gamePlayCSS.gameOverCSS(); //display game over message
-      gamePlayCSS.winCriteriaCalc(); //check combination won, activate CSS line
-      tictactoegame.drawCheck(); //check for a draw
-      gamePlayCSS.drawCSS(); //update draw message
-      tictactoegame.turnNotification(); // Change player turn & update HTML
-      gamePlayCSS.turnCSS(); //alternative 'your turn text on screen'
-    }
-  } //end if
+      setTimeout( function() {
+        tictactoegame.aiCalc();
+        tictactoegame.clickCounter += 1; //add count to valid turns played
+        tictactoegame.gameOverCheckThree(); //check if won, and display win message.
+        gamePlayCSS.gameOverCSS(); //display game over message
+        gamePlayCSS.winCriteriaCalc(); //check combination won, activate CSS line
+        tictactoegame.drawCheck(); //check for a draw
+        gamePlayCSS.drawCSS(); //update draw message
+        tictactoegame.turnNotification(); // Change player turn & update HTML
+        gamePlayCSS.turnCSS(); //alternative 'your turn text on screen'
+
+      }, 500); //end timeOut function
+    } //end if
+  }
   else
   { // message to play a different square
     $('#msgDisplay').html("Please choose another square, that one has been played");

@@ -149,7 +149,7 @@ const tictactoegame = {
     {
       // hard AI sequence of play -put into gamePlayCSS, DRY up later
       if (tictactoegame.gamePlayRecord[4] === 5) {
-        $('#item-5 .player2TokenBoard').css({'visibility': 'visible'});
+        $('#item-5 .player2TokenBoard').css({'visibility': 'visible'},{'transition-duration': '5s'});
         tictactoegame.gamePlayRecord[4] = 'Player 2';
       }
       else if (tictactoegame.gamePlayRecord[0] === 1) {
@@ -288,7 +288,7 @@ $('.playSquare').on("click", function () {
     gamePlayCSS.turnCSS(); //alternative 'your turn text on screen'
     // debugger;
     //AI turn (if required)
-    console.log('ai player',tictactoegame.aiPlayer,'winner', tictactoegame.winner,'draw',tictactoegame.drawChecker);
+    // console.log('ai player',tictactoegame.aiPlayer,'winner', tictactoegame.winner,'draw',tictactoegame.drawChecker);
     if(tictactoegame.aiPlayer === 'true' &&
       tictactoegame.winner === 'none' &&
       tictactoegame.drawChecker ==='false')
@@ -320,10 +320,12 @@ $('#reset').on("click", function () {
   tictactoegame.scoreBoard.Player2 = 0;
   $('#scorePlayer1').html("0");
   $('#scorePlayer2').html("0");
-  $('.entryPage').fadeIn();
+  $('.playerChoicePage').css('visibility', 'visible');
   $('.playingScreen').css('visibility', 'hidden');
   $('#namePlayer1').val("");
   $('#namePlayer2').val("");
+  $('#playAgain').css('visibility', 'hidden');
+  $('#reset').css('visibility', 'hidden');
 
 
   // console.log(tictactoegame.scoreBoard);
@@ -343,13 +345,36 @@ $('#playAgain').on("click", function () {
 //starting button entry page action
 $('#start').on("click", function () {
   $('.playingScreen').css('visibility', 'visible');
-  $('.entryPage').fadeOut();
+  $('.entryPage').css('visibility', 'hidden');
   $('#playerName1').html( $('#namePlayer1').val() );
-  $('#playerName2').html( $('#namePlayer2').val() );
+
   $('#playAgain').css('visibility', 'visible');
   $('#reset').css('visibility', 'visible');
+  if(tictactoegame.aiPlayer === 'false') {
+    $('#playerName2').html( $('#namePlayer2').val() );
+  }
 });
 
+//starting button entry page action
+$('#onePlayerGame').on("click", function () {
+  $('.entryPage').css('visibility', 'visible');
+  $('.playerChoicePage').css('visibility', 'hidden');
+  tictactoegame.aiPlayer = 'true';
+  $('#playerName2').html("Computer");
+  $('#namePlayer2').hide();
+  $('#label2').hide();
+  console.log('#playerName2',playerName2);
+});
+
+$('#twoPlayerGame').on("click", function () {
+  $('.entryPage').css('visibility', 'visible');
+  $('.playerChoicePage').css('visibility', 'hidden');
+  tictactoegame.aiPlayer = 'false';
+  $('#namePlayer2').show();
+  $('#label2').show();
+});
+
+//hide Player 2 name AND set reset to go back to entry page
 
 
 //Allow player to choose animal, and assign AI vs player based on choice.

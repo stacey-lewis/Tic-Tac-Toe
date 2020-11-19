@@ -11,19 +11,28 @@
 
     <div id="screen">
 
+      <div class="playerChoicePage">
+        <h1 class="explain">Welcome to 'bugs & dinosaurs'</h1>
+        <h3 class="explain">It's like naughts and crosses but with your favourite animals!</h3>
+        <p class="explain"> Choose how many are playing today </p>
+        <form>
+          <button type=button id="onePlayerGame">One Player </button>
+          <button type=button id="twoPlayerGame">Two Players </button>
+        </form>
+      </div>
+
       <div class="entryPage">
         <h1 class="explain">Welcome to 'bugs & dinosaurs'</h1>
         <h3 class="explain">It's like naughts and crosses but with your favourite animals!</h3>
         <p class="explain"> Enter your name below to start playing: </p>
         <form>
-          <label for="namePlayer1">Player name 1:</label>
+          <label id="label1" for="namePlayer1">Player name 1:</label>
           <input type="text" id="namePlayer1" name="namePlayer1" placeholder="Type name here"><br>
-          <label for="namePlayer2">Player name 2:</label>
+          <label id="label2" for="namePlayer2">Player name 2:</label>
           <input type="text" id="namePlayer2" name="namePlayer2" placeholder="Type name here"><br>
           <button type=button id="start">Start play! </button>
         </form>
       </div>
-
 
       <div class="playingScreen">
         <div id='header'><h1> Bugs & Dinosaurs </h1></div>

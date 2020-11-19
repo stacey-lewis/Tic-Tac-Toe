@@ -125,6 +125,8 @@ transform: rotate(135deg);
   margin: auto;
   visibility: hidden;
   align-self: center;
+  transition-duration: 1s;
+  transition-delay: 0;
 }
 
 .player2TokenBoard {
@@ -134,6 +136,8 @@ transform: rotate(135deg);
   visibility: hidden;
   width: 70%;
   align-self: center;
+  transition-duration: 1s;
+  transition-delay: 0;
 }
 
 h3, h2 {
@@ -184,7 +188,7 @@ h3, h2 {
   transition-delay: 0.1s;
 }
 
-#start {
+#start, #onePlayerGame, #twoPlayerGame {
   background: rgb(187, 219, 178);
   font-size: 20px;
   border-radius: 8px;
@@ -206,6 +210,21 @@ h3, h2 {
 .entryPage {
   position: absolute;
   z-index: 2;
+  background: rgba(251, 251, 251, 0.7);
+  padding-bottom: 80px;
+  padding-top: 30px;
+  margin: 0 auto;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  border-radius: 3%;
+  visibility: hidden;
+}
+
+.playerChoicePage {
+  position: absolute;
+  z-index: 3;
   background: rgba(251, 251, 251, 0.7);
   padding-bottom: 80px;
   padding-top: 30px;

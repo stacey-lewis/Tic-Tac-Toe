@@ -132,8 +132,6 @@ transform: rotate(135deg);
   margin: auto;
   visibility: hidden;
   align-self: center;
-  transition-duration: 1s;
-  transition-delay: 0;
 }
 
 .player2TokenBoard {
@@ -143,8 +141,6 @@ transform: rotate(135deg);
   visibility: hidden;
   width: 70%;
   align-self: center;
-  transition-duration: 1s;
-  transition-delay: 0;
 }
 
 h3, h2 {

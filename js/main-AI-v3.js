@@ -1,16 +1,17 @@
 console.log("JS Main Linked");
 
 
-// PART 1:
-//JS backend
 
+
+
+//----------------------------BACK END GAME FUNCTIONALITY---------------------------//
 const tictactoegame = {
 
   clickCounter: 0, //record of valid squares played
   turnCounter: 'Player 1', //record of player turn currently
-  drawChecker: 'false', //record of draw
+  drawChecker: false, //record of draw
   winner: 'none', //record of winner
-  aiPlayer:'true', //determines if one player game
+  aiPlayer: true, //determines if one player game
   aiPlayerLevel: 'hard', //random assignment of level vs based on best chance.
 
   gamePlayRecord: [
@@ -53,7 +54,7 @@ const tictactoegame = {
   drawCheck: function () {
   if (tictactoegame.clickCounter === 9 &&
     tictactoegame.winner === 'none') {
-    tictactoegame.drawChecker = 'true';
+    tictactoegame.drawChecker = true;
   }}, // end draw check
 
   turnNotification: function () {
@@ -122,7 +123,7 @@ const tictactoegame = {
 
   //updated score board and set starting player for 'play again' button
   updateScoreAndSetLoserAsStartingPlayer: function () {
-    if (this.aiPlayer =='true') {
+    if (this.aiPlayer == true) {
        this.turnCounter = 'Player 1';
     } //end ai if
     else
@@ -189,7 +190,7 @@ const tictactoegame = {
 
 }; //end tictactoegame
 
-//-----------------CLICK FUNCTION ----------------------------//
+//----------------------------DOM GAME FUNCTIONALITY---------------------------//
 
 //object to capture game play:
 const gamePlayCSS = {
@@ -221,10 +222,9 @@ const gamePlayCSS = {
     $('.playSquare').find('img').css({'visibility': 'hidden'});
     $('.playSquare').find('.strike-out').css({'visibility': 'hidden'});
     tictactoegame.winner = "none";
-    tictactoegame.drawChecker = "false";
+    tictactoegame.drawChecker = false;
     tictactoegame.clickCounter = 0;
     $('#msgDisplay').html("");
-    // this.turnCounter = 'Player 1';
     for (let i =0; i < tictactoegame.gamePlayRecord.length; i++) {
       const number = i + 1;
       tictactoegame.gamePlayRecord[i] = number;
@@ -245,7 +245,7 @@ const gamePlayCSS = {
   }, //end winCriteriaCalc function
 
   drawCSS: function () {
-    if(tictactoegame.drawChecker == 'true') {
+    if(tictactoegame.drawChecker == true) {
       $('#msgDisplay').html("It's a draw!");
     }
   }, //publishes draw message
@@ -253,13 +253,14 @@ const gamePlayCSS = {
 };
 
 
+//----------------------------CLICK FUNCTIONS---------------------------//
 
 //action on click of board square
 $('.playSquare').on("click", function () {
   $('#msgDisplay').html(""); //clear screen message
 
   //check if game over
-  if (tictactoegame.winner !== "none" || tictactoegame.drawChecker == 'true') {
+  if (tictactoegame.winner !== "none" || tictactoegame.drawChecker == true) {
     $('#msgDisplay').html('The game is over, click below to play again!');
   }
 
@@ -286,14 +287,13 @@ $('.playSquare').on("click", function () {
     gamePlayCSS.drawCSS(); //update draw message
     tictactoegame.turnNotification(); // Change player turn & update HTML
     gamePlayCSS.turnCSS(); //alternative 'your turn text on screen'
-    // debugger;
-    //AI turn (if required)
-    // console.log('ai player',tictactoegame.aiPlayer,'winner', tictactoegame.winner,'draw',tictactoegame.drawChecker);
-    if(tictactoegame.aiPlayer === 'true' &&
+
+    //AI turn from here
+    if(tictactoegame.aiPlayer == true &&
       tictactoegame.winner === 'none' &&
-      tictactoegame.drawChecker ==='false')
+      tictactoegame.drawChecker == false)
     {
-      console.log('ais turn');
+
       tictactoegame.aiCalc();
       tictactoegame.clickCounter += 1; //add count to valid turns played
       tictactoegame.gameOverCheckThree(); //check if won, and display win message.
@@ -326,10 +326,6 @@ $('#reset').on("click", function () {
   $('#namePlayer2').val("");
   $('#playAgain').css('visibility', 'hidden');
   $('#reset').css('visibility', 'hidden');
-
-
-  // console.log(tictactoegame.scoreBoard);
-
 });
 
 //play again button actions
@@ -337,7 +333,6 @@ $('#playAgain').on("click", function () {
   tictactoegame.updateScoreAndSetLoserAsStartingPlayer();
   gamePlayCSS.resetBoard();
   gamePlayCSS.turnCSS();
-  // console.log(tictactoegame.scoreBoard);
   $('#scorePlayer2').html(tictactoegame.scoreBoard.Player2);
   $('#scorePlayer1').html(tictactoegame.scoreBoard.Player1);
 });
@@ -349,7 +344,7 @@ $('#start').on("click", function () {
   $('#playerName1').html( $('#namePlayer1').val() );
   $('#playAgain').css('visibility', 'visible');
   $('#reset').css('visibility', 'visible');
-  if(tictactoegame.aiPlayer === 'false') {
+  if(tictactoegame.aiPlayer == false) {
     $('#playerName2').html( $('#namePlayer2').val() );
   }
 });
@@ -358,27 +353,16 @@ $('#start').on("click", function () {
 $('#onePlayerGame').on("click", function () {
   $('.entryPage').fadeIn();
   $('.playerChoicePage').fadeOut();
-  tictactoegame.aiPlayer = 'true';
+  tictactoegame.aiPlayer = true;
   $('#playerName2').html("Computer");
   $('#namePlayer2').hide();
   $('#label2').hide();
-  console.log('#playerName2',playerName2);
 });
 
 $('#twoPlayerGame').on("click", function () {
   $('.entryPage').fadeIn();
   $('.playerChoicePage').fadeOut();
-  tictactoegame.aiPlayer = 'false';
+  tictactoegame.aiPlayer = false;
   $('#namePlayer2').show();
   $('#label2').show();
 });
-
-//hide Player 2 name AND set reset to go back to entry page
-
-
-//Allow player to choose animal, and assign AI vs player based on choice.
-// CSS updates
-// add entry screen to prompt for 1 or 2 player game (copy entry screen and just update to two buttons)
-// If one player, then insert if statement for AI = true and run additional code based on that
-// Allow player to select icon of bug vs dinosaur
-// Finally have a function to randomly select who goes first if two player?
